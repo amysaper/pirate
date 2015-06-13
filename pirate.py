@@ -16,23 +16,35 @@ ingredients = {
     "fruity": ["slice of orange", "dash of cassis", "cherry on top"]
 }
 
-def question ()
-"""I ask the user what types of drinks he or she likes and return a dictionary of the results"""
-recipe = []
-for questions.keys()
-  favorite = raw_input (questions.values())
-  if favorite = 'y' or 'yes'
-    recipe [questions.keys()] = True
-return recipe
+def question():
+  """I ask the user what types of drinks he or she likes and return a dictionary of the     results"""
+  recipe = {
+    "strong": False,
+    "salty": False,
+    "bitter": False,
+    "sweet": False,
+    "fruity": False,
+  }
+  for descriptor in questions:
+    print (descriptor)
+    favorite = raw_input (questions[descriptor])
+    if favorite == "y" or favorite == "yes":
+     recipe[descriptor] = True
+  print recipe
+  return recipe
 
-def drinkmaker(recipe)
-drink= []
-for recipe.keys()
-  if recipe.values() = 'True'
-    drink.append(ingredients.values(recipe.keys())
-return drink
-if _name_=='_main_'
-                 question()
-                 drinkmaker(recipe)
-                 print drink
+def drinkmaker(recipe):
+  """Based on the drinker's favs, concocts his or her ideal drink."""
+  drink= []
+  for ingredient in recipe:
+    if recipe[ingredient]:
+      drink.append(random.choice(ingredients[ingredient]))
+  print drink
+  return drink
+
+if __name__=='__main__':
+  print ("running question function")
+  recipe = question()
+  drink = drinkmaker(recipe)
+  print drink
               
